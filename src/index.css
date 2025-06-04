@@ -1,2 +1,33 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+:root {
+  --bg: white;
+  --bg1: #393e46;
+}
+.nav-bg {
+  background-color: var(--bg);
+}
+.text-c {
+  color: var(--bg1);
+}
+[data-theme="dark"] {
+  --bg: #09122c;
+  --bg1: white;
+}
+
+@font-face {
+  font-family: DM Sans;
+  src: url(../public/DMSans-VariableFont_opsz\wght.ttf);
+}
+@font-face {
+  font-family: Inter;
+  src: url(../public/Inter-VariableFont_opsz\wght.ttf);
+}
+.font1 {
+  font-family: "DM Sans", sans-serif;
+}
+
+.font2 {
+  font-family: "Inter", sans-serif;
+}
