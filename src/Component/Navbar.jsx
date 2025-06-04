@@ -19,14 +19,12 @@ const Navbar = () => {
       <nav className="nav-bg shadow-md">
         <div className="md:w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            
             <div className="flex items-center">
               <span className="ml-2 text-xl font-bold text-c font2">
                 Jointly
               </span>
             </div>
 
-            
             <div className="hidden md:flex items-center space-x-8">
               <Link>
                 <a className="text-c hover:text-gray-900">Home</a>
@@ -34,7 +32,7 @@ const Navbar = () => {
               <Link>
                 <a className="text-c hover:text-gray-900">Upcoming Events</a>
               </Link>
-              <Link>
+              <Link to={"/create-event"}>
                 <a className="text-c hover:text-gray-900">Create Event</a>
               </Link>
               <Link>
@@ -42,7 +40,6 @@ const Navbar = () => {
               </Link>
             </div>
 
-            
             <div className="hidden md:flex items-center space-x-4">
               <button
                 onClick={handleAuth}
@@ -107,7 +104,6 @@ const Navbar = () => {
               </div>
             </div>
 
-            
             <div className="md:hidden flex items-center">
               <button
                 onClick={toggleMenu}
@@ -135,7 +131,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        
         {isOpen && (
           <div className="md:hidden">
             <div className="flex justify-center">

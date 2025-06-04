@@ -4,16 +4,28 @@
 :root {
   --bg: white;
   --bg1: #393e46;
+  --bg2: #f7f7f7;
+  --bg-3: #09122c;
 }
 .nav-bg {
   background-color: var(--bg);
 }
+.bg1 {
+  background-color: var(--bg2);
+}
+.bg-3 {
+  background-color: var(--bg-3);
+}
 .text-c {
   color: var(--bg1);
+}
+.text-w {
+  color: var(--bg);
 }
 [data-theme="dark"] {
   --bg: #09122c;
   --bg1: white;
+  --bg2: #09122c;
 }
 
 @font-face {
