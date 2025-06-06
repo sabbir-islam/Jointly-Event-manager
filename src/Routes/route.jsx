@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Root from "../Pages/Root";
 import Home from "../Pages/Home";
 import CreateEvent from "../Pages/CreateEvent";
+import Login from "../Pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/create-event",
         Component: CreateEvent,
+      },
+      {
+        path: "/login",
+        Component: Login,
       },
     ],
   },

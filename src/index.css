@@ -6,6 +6,8 @@
   --bg1: #393e46;
   --bg2: #f7f7f7;
   --bg-3: #09122c;
+  --bg-4: #f2f2f2;
+  --bg-5: #e0e0e0;
 }
 .nav-bg {
   background-color: var(--bg);
@@ -15,6 +17,12 @@
 }
 .bg-3 {
   background-color: var(--bg-3);
+}
+.bg-4 {
+  background-color: var(--bg-4);
+}
+.bg-5 {
+  background-color: var(--bg-5);
 }
 .text-c {
   color: var(--bg1);
@@ -26,6 +34,8 @@
   --bg: #09122c;
   --bg1: white;
   --bg2: #09122c;
+  --bg-4: #333446;
+  --bg-5: black;
 }
 
 @font-face {

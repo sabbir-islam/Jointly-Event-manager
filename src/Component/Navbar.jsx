@@ -41,16 +41,14 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              <button
-                onClick={handleAuth}
-                className={`btn px-4 py-2 rounded-md text-sm font-medium ${
-                  isLoggedIn
-                    ? "bg-red-500 hover:bg-red-600 text-white"
-                    : "bg-blue-500 hover:bg-blue-600 text-white"
-                }`}
-              >
-                {isLoggedIn ? "Logout" : "Login"}
-              </button>
+              <Link to={"/login"}>
+                <button
+                  onClick={handleAuth}
+                  className={`btn px-4 py-2 rounded-md text-sm font-medium`}
+                >
+                  LogIn
+                </button>
+              </Link>
               <div>
                 <label className="toggle text-base-content">
                   <input

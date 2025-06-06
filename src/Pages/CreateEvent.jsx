@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 
 const CreateEvent = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +29,18 @@ const CreateEvent = () => {
       ...formData,
     };
     console.log("Event Data:", eventData);
+
+    axios
+      .post("https://jointly-event-management.vercel.app/events", eventData)
+      .then((res) => {
+        toast.success("Event Created Successfully");
+        console.log(res.data);
+        e.target.reset();
+      })
+      .catch((error) => {
+        toast.error(error);
+        console.log(error);
+      });
   };
 
   return (
