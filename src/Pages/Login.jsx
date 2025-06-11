@@ -1,9 +1,31 @@
 import Lottie, { LottiePlayer } from "lottie-react";
-import React from "react";
+import React, { use } from "react";
 import animation from "../assets/A1.json";
 import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
+
 const Login = () => {
+  const { login } = use(AuthContext);
+
+  const handelLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    login(email, password)
+      .then((result) => {
+        toast.success("Login Successful");
+        console.log(result);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="bg-5 pb-20 pt-14 md:pt-32">
       <div className="md:w-[70%] w-[90%] md:h-auto mx-auto flex flex-col-reverse md:flex-row justify-between items-center gap-4 md:gap-48 nav-bg p-4 rounded-2xl">
@@ -12,24 +34,28 @@ const Login = () => {
             <h1 className="text-4xl font-semibold">Hello,</h1>
             <h1 className="text-4xl font-semibold">Welcome Back</h1>
           </div>
-          <fieldset className="fieldset">
+          <form onSubmit={handelLogin} className="fieldset">
             <label className="label">Email</label>
             <input
               type="email"
               className="input w-[300px]"
               placeholder="Email"
+              name="email"
             />
             <label className="label">Password</label>
             <input
               type="password"
               className="input w-[300px]"
               placeholder="Password"
+              name="password"
             />
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button className="btn btn-neutral mt-4 w-[100px]">Login</button>
-          </fieldset>
+            <button type="submit" className="btn btn-neutral mt-4 w-[100px]">
+              Login
+            </button>
+          </form>
           <div className="divider">OR</div>
           <div className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
             <Link>

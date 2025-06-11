@@ -1,10 +1,40 @@
 import Lottie, { LottiePlayer } from "lottie-react";
-import React from "react";
+import React, { use } from "react";
 import animation from "../assets/A2.json";
 import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const SignUp = () => {
+  const { register } = use(AuthContext);
+
+  const handelSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const pass = form.password.value;
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(pass)) {
+      toast.error(
+        "Password must be at least 6 characters and contain both uppercase and lowercase letters."
+      );
+      return;
+    }
+    console.log(name, photo, email, pass);
+
+    register(email, pass)
+      .then((result) => {
+        toast.success("User Created Successfully");
+        console.log(result);
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  };
   return (
     <div>
       <div className="bg-5 pb-20 pt-14 md:pt-32">
@@ -14,36 +44,44 @@ const SignUp = () => {
               <h1 className="text-4xl font-semibold">Hello,</h1>
               <h1 className="text-4xl font-semibold">Create an Account</h1>
             </div>
-            <fieldset className="fieldset">
+            <form onSubmit={handelSignUp} className="fieldset">
               <label className="label">Name</label>
               <input
                 type="text"
                 className="input w-[300px]"
                 placeholder="Enter Name"
+                name="name"
+                required
               />
               <label className="label">Photo</label>
               <input
                 type="text"
                 className="input w-[300px]"
                 placeholder="Enter Photo URL"
+                name="photo"
+                required
               />
               <label className="label">Email</label>
               <input
                 type="email"
                 className="input w-[300px]"
                 placeholder="Email"
+                name="email"
+                required
               />
               <label className="label">Password</label>
               <input
                 type="password"
                 className="input w-[300px]"
                 placeholder="Password"
+                name="password"
+                required
               />
 
-              <button className="btn btn-neutral mt-4 w-[100px]">
+              <button type="submit" className="btn btn-neutral mt-4 w-[100px]">
                 Sign Up
               </button>
-            </fieldset>
+            </form>
             <div className="divider">OR</div>
             <div className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
               <Link>
