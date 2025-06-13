@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -26,18 +26,30 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <Link>
-                <a className="text-c hover:text-gray-900">Home</a>
-              </Link>
-              <Link>
-                <a className="text-c hover:text-gray-900">Upcoming Events</a>
-              </Link>
-              <Link to={"/create-event"}>
-                <a className="text-c hover:text-gray-900">Create Event</a>
-              </Link>
-              <Link>
-                <a className="text-c hover:text-gray-900">Manage Events</a>
-              </Link>
+              <NavLink to={"/"} className={({ isActive }) => isActive
+                    ? "text-green-800 text-base font-bold "
+                    : "text-base  hover:text-green-800 transition duration-300" }>
+                Home
+              </NavLink>
+              <NavLink to={"/up"} className={({ isActive }) => isActive
+                    ? "text-green-800 text-base font-bold "
+                    : "text-base  hover:text-green-800 transition duration-300" }>
+                Upcoming Events
+              </NavLink>
+              <NavLink className={({ isActive }) =>
+                  isActive
+                    ? "text-green-800 text-base font-bold "
+                    : "text-base  hover:text-green-800 transition duration-300"
+                } to={"/create-event"}>
+                Create Event
+              </NavLink>
+              <NavLink to={"/ev"} className={({ isActive }) =>
+                  isActive
+                    ? "text-green-800 text-base font-bold "
+                    : "text-base  hover:text-green-800 transition duration-300"
+                }>
+                Manage Events
+              </NavLink>
             </div>
 
             <div className="hidden md:flex items-center space-x-4">

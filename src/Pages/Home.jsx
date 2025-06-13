@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Features from "./Features";
+import Gallery from "./Gallery";
 
 const Home = () => {
   const ref = useRef(null);
@@ -44,6 +45,15 @@ const Home = () => {
           </button>
         </div>
       </div>
+
+      <div className="my-20">
+        <Gallery></Gallery>
+      </div>
+
+      <div>
+        
+      </div>
+
     </div>
   );
 };
