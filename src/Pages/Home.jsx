@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Features from "./Features";
 import Gallery from "./Gallery";
+import NewsLetter from "./NewsLetter";
 
 const Home = () => {
   const ref = useRef(null);
@@ -50,8 +51,8 @@ const Home = () => {
         <Gallery></Gallery>
       </div>
 
-      <div>
-        
+      <div className="my-20">
+        <NewsLetter></NewsLetter>
       </div>
 
     </div>
