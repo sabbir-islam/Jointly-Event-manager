@@ -1,13 +1,15 @@
 import Lottie, { LottiePlayer } from "lottie-react";
 import React, { use } from "react";
 import animation from "../assets/A1.json";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { login ,setUser  } = use(AuthContext);
+  const { login, setUser, googleLogin } = use(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -19,18 +21,25 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         toast.success("Login Successful");
-        console.log(result);
-        setUser(result.user)
+        setUser(result.user);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
 
-  const handelGoogleLogin =()=>{
-    alert('clicked')
-  }
-
+  const handelGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        toast.success("Login Successful");
+        setUser(result.user);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
 
   return (
     <div className="bg-5 pb-20 pt-14 md:pt-32">
@@ -63,7 +72,10 @@ const Login = () => {
             </button>
           </form>
           <div className="divider">OR</div>
-          <div onClick={handelGoogleLogin} className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
+          <div
+            onClick={handelGoogleLogin}
+            className="card btn bg-base-300 rounded-box w-20 h-10 ml-24"
+          >
             <Link>
               <FcGoogle size={25} />
             </Link>

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { logOut, user, serverUserData } = use(AuthContext);
+  const { logOut, user, serverUserData} = use(AuthContext);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const handleAuth = () => setIsLoggedIn(!isLoggedIn);
@@ -28,6 +28,9 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+
+  // console.log(serverUserData.name);
+  
   return (
     <div>
       <nav className="nav-bg shadow-md">
@@ -82,9 +85,10 @@ const Navbar = () => {
               </NavLink>
             </div>
 
-            {/* user image here  */}
-            <div className="avatar">
-              <div className="relative ring-offset-base-100 mt-4 md:mt-0 group inline-block cursor-pointer">
+            
+            <div className="md:flex items-center gap-3">
+              {/* user image here  */}
+              <div className="relative mt-6 md:mt-0 group inline-block cursor-pointer">
                 <img
                   className="rounded-full w-8 h-8"
                   src={user ? serverUserData?.photo || user.photoURL || "" : ""}
@@ -96,9 +100,8 @@ const Navbar = () => {
                   </span>
                 )}
               </div>
-            </div>
-
-            <div className="hidden md:flex items-center space-x-4">
+              
+              <div className="hidden md:flex items-center space-x-4">
               {user ? (
                 <Link>
                   <button
@@ -170,6 +173,9 @@ const Navbar = () => {
                 </label>
               </div>
             </div>
+            </div>
+
+            
 
             <div className="md:hidden flex items-center">
               <button

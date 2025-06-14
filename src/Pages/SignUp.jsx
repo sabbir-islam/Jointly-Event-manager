@@ -1,7 +1,7 @@
 import Lottie, { LottiePlayer } from "lottie-react";
 import React, { use } from "react";
 import animation from "../assets/A2.json";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -9,6 +9,8 @@ import axios from "axios";
 
 const SignUp = () => {
   const { register } = use(AuthContext);
+  const navigate = useNavigate();
+  
 
   const handelSignUp = (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ const SignUp = () => {
       .then((result) => {
         toast.success("User Created Successfully");
         console.log(result);
+        navigate("/");
         axios
           .post("https://jointly-event-management.vercel.app/users", {
             name,

@@ -3,18 +3,22 @@ import { app } from "../Firebase/firebase.config";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import axios from "axios";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [serverUserData, setServerUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -23,10 +27,14 @@ const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+  const googleLogin = () => {
+    return signInWithPopup(auth, provider);
+  };
 
   const logOut = () => {
     return signOut(auth);
   };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -37,6 +45,7 @@ const AuthProvider = ({ children }) => {
             const res = await axios.get(
               `https://jointly-event-management.vercel.app/users/${currentUser.email}`
             );
+            console.log("Server Response: ", res.data);
             setServerUserData(res.data);
           } catch (error) {
             console.error("Failed to fetch user data from server:", error);
@@ -45,6 +54,7 @@ const AuthProvider = ({ children }) => {
         } else {
           setServerUserData(null);
         }
+        setLoading(false);
       };
 
       fetchServerUser();
@@ -53,15 +63,20 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+
   const authData = {
     user,
     setUser,
     register,
     login,
+    googleLogin,
     logOut,
     serverUserData,
+    setLoading
   };
-  return <AuthContext value={authData}>{children}</AuthContext>;
+  return (
+    <AuthContext.Provider value={authData}>{!loading && children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
