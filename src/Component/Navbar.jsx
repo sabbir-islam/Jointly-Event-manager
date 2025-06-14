@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const { logOut, user, serverUserData } = use(AuthContext);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const handleAuth = () => setIsLoggedIn(!isLoggedIn);
@@ -13,6 +16,17 @@ const Navbar = () => {
     const newTheme = isDarkMode ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", newTheme);
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {
+        console.log(result);
+        toast.success("LogOut Successful!");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
   return (
     <div>
@@ -26,41 +40,84 @@ const Navbar = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <NavLink to={"/"} className={({ isActive }) => isActive
+              <NavLink
+                to={"/"}
+                className={({ isActive }) =>
+                  isActive
                     ? "text-green-800 text-base font-bold "
-                    : "text-base  hover:text-green-800 transition duration-300" }>
+                    : "text-base  hover:text-green-800 transition duration-300"
+                }
+              >
                 Home
               </NavLink>
-              <NavLink to={"/up"} className={({ isActive }) => isActive
+              <NavLink
+                to={"/upcoming-events"}
+                className={({ isActive }) =>
+                  isActive
                     ? "text-green-800 text-base font-bold "
-                    : "text-base  hover:text-green-800 transition duration-300" }>
+                    : "text-base  hover:text-green-800 transition duration-300"
+                }
+              >
                 Upcoming Events
               </NavLink>
-              <NavLink className={({ isActive }) =>
+              <NavLink
+                className={({ isActive }) =>
                   isActive
                     ? "text-green-800 text-base font-bold "
                     : "text-base  hover:text-green-800 transition duration-300"
-                } to={"/create-event"}>
+                }
+                to={"/create-event"}
+              >
                 Create Event
               </NavLink>
-              <NavLink to={"/ev"} className={({ isActive }) =>
+              <NavLink
+                to={"/ev"}
+                className={({ isActive }) =>
                   isActive
                     ? "text-green-800 text-base font-bold "
                     : "text-base  hover:text-green-800 transition duration-300"
-                }>
+                }
+              >
                 Manage Events
               </NavLink>
             </div>
 
+            {/* user image here  */}
+            <div className="avatar">
+              <div className="relative ring-offset-base-100 mt-4 md:mt-0 group inline-block cursor-pointer">
+                <img
+                  className="rounded-full w-8 h-8"
+                  src={user ? serverUserData?.photo || user.photoURL || "" : ""}
+                  alt=""
+                />
+                {user && (
+                  <span className="absolute top-1/2 -translate-y-1/2 right-full mr-2 px-2 py-1 text-sm bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                    {serverUserData?.name || user.displayName}
+                  </span>
+                )}
+              </div>
+            </div>
+
             <div className="hidden md:flex items-center space-x-4">
-              <Link to={"/login"}>
-                <button
-                  onClick={handleAuth}
-                  className={`btn px-4 py-2 rounded-md text-sm font-medium`}
-                >
-                  LogIn
-                </button>
-              </Link>
+              {user ? (
+                <Link>
+                  <button
+                    onClick={handleLogOut}
+                    className={`btn px-4 py-2 rounded-md text-sm font-medium bg-red-500`}
+                  >
+                    LogOut
+                  </button>
+                </Link>
+              ) : (
+                <Link to={"/login"}>
+                  <button
+                    onClick={handleAuth}
+                    className={`btn px-4 py-2 rounded-md text-sm font-medium bg-green-700`}
+                  >
+                    LogIn
+                  </button>
+                </Link>
+              )}
               <div>
                 <label className="toggle text-base-content">
                   <input

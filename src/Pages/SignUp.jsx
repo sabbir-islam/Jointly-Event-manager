@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { AuthContext } from "../Provider/AuthProvider";
+import axios from "axios";
 
 const SignUp = () => {
   const { register } = use(AuthContext);
@@ -30,6 +31,18 @@ const SignUp = () => {
       .then((result) => {
         toast.success("User Created Successfully");
         console.log(result);
+        axios
+          .post("https://jointly-event-management.vercel.app/users", {
+            name,
+            photo,
+            email,
+          })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       })
       .catch((err) => {
         toast.error(err);

@@ -7,7 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { login } = use(AuthContext);
+  const { login ,setUser  } = use(AuthContext);
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -20,11 +20,17 @@ const Login = () => {
       .then((result) => {
         toast.success("Login Successful");
         console.log(result);
+        setUser(result.user)
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
+
+  const handelGoogleLogin =()=>{
+    alert('clicked')
+  }
+
 
   return (
     <div className="bg-5 pb-20 pt-14 md:pt-32">
@@ -57,7 +63,7 @@ const Login = () => {
             </button>
           </form>
           <div className="divider">OR</div>
-          <div className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
+          <div onClick={handelGoogleLogin} className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
             <Link>
               <FcGoogle size={25} />
             </Link>
