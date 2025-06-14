@@ -10,6 +10,8 @@ const UpcomingEvents = () => {
     const eventDate = new Date(event.date);
     return eventDate >= now;
   });
+
+  
     
     return (
         <div className='w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 justify-center items-center my-10 gap-2 '>

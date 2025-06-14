@@ -7,7 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const { logOut, user, serverUserData} = use(AuthContext);
+  const { logOut, user, serverUserData } = use(AuthContext);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const handleAuth = () => setIsLoggedIn(!isLoggedIn);
@@ -30,7 +31,7 @@ const Navbar = () => {
   };
 
   // console.log(serverUserData.name);
-  
+
   return (
     <div>
       <nav className="nav-bg shadow-md">
@@ -63,7 +64,7 @@ const Navbar = () => {
               >
                 Upcoming Events
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className={({ isActive }) =>
                   isActive
                     ? "text-green-800 text-base font-bold "
@@ -72,8 +73,8 @@ const Navbar = () => {
                 to={"/create-event"}
               >
                 Create Event
-              </NavLink>
-              <NavLink
+              </NavLink> */}
+              {/* <NavLink
                 to={"/ev"}
                 className={({ isActive }) =>
                   isActive
@@ -82,100 +83,121 @@ const Navbar = () => {
                 }
               >
                 Manage Events
-              </NavLink>
+              </NavLink> */}
             </div>
 
-            
             <div className="md:flex items-center gap-3">
-              {/* user image here  */}
+              {/* user profile here  */}
               <div className="relative mt-6 md:mt-0 group inline-block cursor-pointer">
                 <img
                   className="rounded-full w-8 h-8"
                   src={user ? serverUserData?.photo || user.photoURL || "" : ""}
                   alt=""
+                  onClick={() => setShowDropdown(!showDropdown)}
                 />
+                {showDropdown && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+                    <Link
+                      to="/create-event"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      Create Event
+                    </Link>
+                    <Link
+                      to="/my-events"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      Manage Events
+                    </Link>
+                    <Link
+                      to="/join-events"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      Join Events
+                    </Link>
+                  </div>
+                )}
+
                 {user && (
                   <span className="absolute top-1/2 -translate-y-1/2 right-full mr-2 px-2 py-1 text-sm bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
                     {serverUserData?.name || user.displayName}
                   </span>
                 )}
               </div>
-              
+
               <div className="hidden md:flex items-center space-x-4">
-              {user ? (
-                <Link>
-                  <button
-                    onClick={handleLogOut}
-                    className={`btn px-4 py-2 rounded-md text-sm font-medium bg-red-500`}
-                  >
-                    LogOut
-                  </button>
-                </Link>
-              ) : (
-                <Link to={"/login"}>
-                  <button
-                    onClick={handleAuth}
-                    className={`btn px-4 py-2 rounded-md text-sm font-medium bg-green-700`}
-                  >
-                    LogIn
-                  </button>
-                </Link>
-              )}
-              <div>
-                <label className="toggle text-base-content">
-                  <input
-                    type="checkbox"
-                    value="synthwave"
-                    className="theme-controller"
-                    checked={isDarkMode}
-                    onChange={switchTheme}
-                  />
-
-                  <svg
-                    aria-label="sun"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      fill="none"
-                      stroke="currentColor"
+                {user ? (
+                  <Link>
+                    <button
+                      onClick={handleLogOut}
+                      className={`btn px-4 py-2 rounded-md text-sm font-medium bg-red-500`}
                     >
-                      <circle cx="12" cy="12" r="4"></circle>
-                      <path d="M12 2v2"></path>
-                      <path d="M12 20v2"></path>
-                      <path d="m4.93 4.93 1.41 1.41"></path>
-                      <path d="m17.66 17.66 1.41 1.41"></path>
-                      <path d="M2 12h2"></path>
-                      <path d="M20 12h2"></path>
-                      <path d="m6.34 17.66-1.41 1.41"></path>
-                      <path d="m19.07 4.93-1.41 1.41"></path>
-                    </g>
-                  </svg>
-
-                  <svg
-                    aria-label="moon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      strokeLinejoin="round"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      fill="none"
-                      stroke="currentColor"
+                      LogOut
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to={"/login"}>
+                    <button
+                      onClick={handleAuth}
+                      className={`btn px-4 py-2 rounded-md text-sm font-medium bg-green-700`}
                     >
-                      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-                    </g>
-                  </svg>
-                </label>
+                      LogIn
+                    </button>
+                  </Link>
+                )}
+                <div>
+                  <label className="toggle text-base-content">
+                    <input
+                      type="checkbox"
+                      value="synthwave"
+                      className="theme-controller"
+                      checked={isDarkMode}
+                      onChange={switchTheme}
+                    />
+
+                    <svg
+                      aria-label="sun"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="2"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                      </g>
+                    </svg>
+
+                    <svg
+                      aria-label="moon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        strokeLinejoin="round"
+                        strokeLinecap="round"
+                        strokeWidth="2"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                      </g>
+                    </svg>
+                  </label>
+                </div>
               </div>
             </div>
-            </div>
-
-            
 
             <div className="md:hidden flex items-center">
               <button

@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const CreateEvent = () => {
+  const {user} = use(AuthContext)
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -12,6 +14,7 @@ const CreateEvent = () => {
     thumbnail: "",
     location: "",
     date: null,
+    userEmail: user?.email,
   });
 
   const handleChange = (e) => {

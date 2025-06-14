@@ -10,6 +10,8 @@ import UpcomingEvents from "../Pages/UpcomingEvents";
 import LoadingPage from "../Pages/LoadingPage";
 import PrivateRoute from "../Provider/PrivateRoute";
 import EventDetail from "../Pages/EventDetail";
+import ManageEvent from "../Pages/ManageEvent";
+import EditEvent from "../Pages/EditEvent";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,18 @@ const router = createBrowserRouter([
         path: "/upcoming-events/:id",
         loader: ({params})=> fetch(`https://jointly-event-management.vercel.app/events/${params.id}`),
         element: <PrivateRoute><EventDetail></EventDetail></PrivateRoute>,
+        hydrateFallbackElement: <LoadingPage></LoadingPage>
+      },
+      {
+        path: "/my-events",
+        loader: ()=> fetch('https://jointly-event-management.vercel.app/events'),
+        element: <PrivateRoute><ManageEvent></ManageEvent></PrivateRoute>,
+        hydrateFallbackElement: <LoadingPage></LoadingPage>
+      },
+      {
+        path: "/my-events/:id",
+        loader: ({params})=>fetch(`https://jointly-event-management.vercel.app/events/${params.id}`),
+        element: <PrivateRoute><EditEvent></EditEvent></PrivateRoute>,
         hydrateFallbackElement: <LoadingPage></LoadingPage>
       },
       {
