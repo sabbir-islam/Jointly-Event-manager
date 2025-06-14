@@ -9,6 +9,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import UpcomingEvents from "../Pages/UpcomingEvents";
 import LoadingPage from "../Pages/LoadingPage";
 import PrivateRoute from "../Provider/PrivateRoute";
+import EventDetail from "../Pages/EventDetail";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +25,15 @@ const router = createBrowserRouter([
         element:<PrivateRoute><CreateEvent></CreateEvent></PrivateRoute>
       },
       {
-        path: "upcoming-events",
+        path: "/upcoming-events",
         Component: UpcomingEvents,
         loader: ()=> fetch('https://jointly-event-management.vercel.app/events'),
+        hydrateFallbackElement: <LoadingPage></LoadingPage>
+      },
+      {
+        path: "/upcoming-events/:id",
+        loader: ({params})=> fetch(`https://jointly-event-management.vercel.app/events/${params.id}`),
+        element: <PrivateRoute><EventDetail></EventDetail></PrivateRoute>,
         hydrateFallbackElement: <LoadingPage></LoadingPage>
       },
       {

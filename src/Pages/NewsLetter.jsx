@@ -20,7 +20,7 @@ const NewsLetter = () => {
             <button className="btn bg-amber-500">Subscribe</button>
           </div>
         </div>
-        <div className="w-[400px] md:w-[600px] h-[400px]">
+        <div className="w-[300px] md:w-[600px] h-[400px]">
           <Lottie animationData={animation} loop={true}></Lottie>
         </div>
       </div>
