@@ -12,6 +12,7 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import EventDetail from "../Pages/EventDetail";
 import ManageEvent from "../Pages/ManageEvent";
 import EditEvent from "../Pages/EditEvent";
+import JoinedEvents from "../Pages/JoinedEvents";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,12 @@ const router = createBrowserRouter([
         path: "/my-events/:id",
         loader: ({params})=>fetch(`https://jointly-event-management.vercel.app/events/${params.id}`),
         element: <PrivateRoute><EditEvent></EditEvent></PrivateRoute>,
+        hydrateFallbackElement: <LoadingPage></LoadingPage>
+      },
+      {
+        path: "/joined-events/:email",
+        loader: ({params})=> fetch(`https://jointly-event-management.vercel.app/joined-events/${params.email}`),
+        element: <PrivateRoute><JoinedEvents></JoinedEvents></PrivateRoute>,
         hydrateFallbackElement: <LoadingPage></LoadingPage>
       },
       {

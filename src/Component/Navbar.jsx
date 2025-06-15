@@ -88,7 +88,7 @@ const Navbar = () => {
 
             <div className="md:flex items-center gap-3">
               {/* user profile here  */}
-              <div className="relative mt-6 md:mt-0 group inline-block cursor-pointer">
+              <div className="relative ml-40 md:ml-0 mt-5 md:mt-0 group inline-block cursor-pointer">
                 <img
                   className="rounded-full w-8 h-8"
                   src={user ? serverUserData?.photo || user.photoURL || "" : ""}
@@ -110,10 +110,10 @@ const Navbar = () => {
                       Manage Events
                     </Link>
                     <Link
-                      to="/join-events"
+                      to={`/joined-events/${user.email}`}
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     >
-                      Join Events
+                      Joined Events
                     </Link>
                   </div>
                 )}
@@ -280,10 +280,10 @@ const Navbar = () => {
               </label>
             </div>
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a className="block px-3 py-2 text-c hover:text-gray-900">Home</a>
-              <a className="block px-3 py-2 text-c hover:text-gray-900">
-                About
-              </a>
+              <Link to={"/"}><a className="block px-3 py-2 text-c hover:text-gray-900">Home</a></Link>
+              <Link to={"/upcoming-events"}><a className="block px-3 py-2 text-c hover:text-gray-900">
+                Upcoming Events
+              </a></Link>
               <a className="block px-3 py-2 text-c hover:text-gray-900">
                 Services
               </a>

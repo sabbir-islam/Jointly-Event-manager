@@ -47,7 +47,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div className="md:w-[80%] mx-auto mt-20">
+    <div className="md:w-[80%] mx-auto my-20">
       <div>
         <div className="bg-[#537D5D] rounded-t-2xl p-8">
           <h1 className="text-2xl font-semiboldbold text-white text-center font1">
