@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      
+
       {
         path: "/upcoming-events",
         Component: UpcomingEvents,
@@ -91,10 +91,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/joined-events/:email",
-        loader: ({ params }) =>
-          fetch(
-            `https://jointly-event-management.vercel.app/joined-events/${params.email}`
-          ),
+        loader: ({ params }) => {
+          const token = localStorage.getItem("token");
+
+          return fetch(
+            `https://jointly-event-management.vercel.app/joined-events/${params.email}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          ).then((res) => {
+            if (!res.ok) {
+              throw new Response("Unauthorized", { status: 401 });
+            }
+            return res.json();
+          });
+        },
         element: (
           <PrivateRoute>
             <JoinedEvents></JoinedEvents>

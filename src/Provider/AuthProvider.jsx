@@ -39,6 +39,15 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
+      // jwt
+      if(currentUser?.email){
+        axios.post('https://jointly-event-management.vercel.app/jwt',{
+        email : currentUser?.email
+      })
+      .then(res=>{localStorage.setItem('token', res.data.token)}
+      )
+      }
+
       const fetchServerUser = async () => {
         if (currentUser?.email) {
           try {

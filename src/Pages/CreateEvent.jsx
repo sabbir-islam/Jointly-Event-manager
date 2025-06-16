@@ -33,8 +33,13 @@ const CreateEvent = () => {
     };
     console.log("Event Data:", eventData);
 
+    const token = localStorage.getItem('token')
     axios
-      .post("https://jointly-event-management.vercel.app/events", eventData)
+      .post("https://jointly-event-management.vercel.app/events", eventData,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then((res) => {
         toast.success("Event Created Successfully");
         console.log(res.data);
