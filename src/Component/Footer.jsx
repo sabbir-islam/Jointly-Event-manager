@@ -15,27 +15,26 @@ const Footer = () => {
             </p>
           </div>
           <div>
-            <h1>Navigate</h1>
+            <h1 className="text-lg font-bold ">Navigate</h1>
             <div className="flex flex-col">
-              <Link>Home</Link>
-              <Link>Home</Link>
-              <Link>Home</Link>
+              <Link to={"/"} className="text-base font-semibold">Home</Link>
+              <Link to={"/upcoming-events"} className="text-base font-semibold">Upcoming Events</Link>
             </div>
           </div>
           <div>
-            <h1>About Us</h1>
+            <h1 className="text-lg font-bold">About Us</h1>
             <div className="flex flex-col">
-              <a href="">Our History</a>
-              <a href="">What We Believe</a>
-              <a href="">Our Program</a>
+              <a className="text-base font-semibold" href="">Our History</a>
+              <a className="text-base font-semibold" href="">What We Believe</a>
+              <a className="text-base font-semibold" href="">Our Program</a>
             </div>
           </div>
           <div>
-            <h1>Contact Info</h1>
+            <h1 className="text-lg font-bold">Contact Info</h1>
             <div className="flex flex-col">
-              <p>Location: Lorem ipsum dolor sit amet.</p>
-              <p>Email: </p>
-              <p>Phone:</p>
+              <p className="text-base font-semibold">Location: Uttara,Dhaka,Bangladesh</p>
+              <p className="text-base font-semibold">Email: jointly@mail.com</p>
+              <p className="text-base font-semibold">Phone: +8801234567891</p>
             </div>
           </div>
         </div>
@@ -43,7 +42,7 @@ const Footer = () => {
       <hr className="border-gray-300 mt-4" />
       <div className="md:w-[80%] mx-auto flex flex-col md:flex-row items-center gap-3 justify-between py-5">
         <div>
-          <h1>© 2025 Non-Profit Organization. All rights reserved.</h1>
+          <h1>© 2025 Jointly. All rights reserved.</h1>
         </div>
         <div className="flex gap-2">
           <SocialIcon

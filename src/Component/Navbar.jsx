@@ -48,8 +48,8 @@ const Navbar = () => {
                 to={"/"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-green-800 text-base font-bold "
-                    : "text-base  hover:text-green-800 transition duration-300"
+                    ? "text-green-800 text-base font-medium "
+                    : "text-base font-medium  hover:text-green-800 transition duration-300"
                 }
               >
                 Home
@@ -58,8 +58,8 @@ const Navbar = () => {
                 to={"/upcoming-events"}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-green-800 text-base font-bold "
-                    : "text-base  hover:text-green-800 transition duration-300"
+                    ? "text-green-800 text-base font-medium "
+                    : "text-base font-medium  hover:text-green-800 transition duration-300"
                 }
               >
                 Upcoming Events
@@ -88,42 +88,46 @@ const Navbar = () => {
 
             <div className="md:flex items-center gap-3">
               {/* user profile here  */}
-              <div className="relative ml-40 md:ml-0 mt-5 md:mt-0 group inline-block cursor-pointer">
-                <img
-                  className="rounded-full w-8 h-8"
-                  src={user ? serverUserData?.photo || user.photoURL || "" : ""}
-                  alt=""
-                  onClick={() => setShowDropdown(!showDropdown)}
-                />
-                {showDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
-                    <Link
-                      to="/create-event"
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
-                      Create Event
-                    </Link>
-                    <Link
-                      to="/my-events"
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
-                      Manage Events
-                    </Link>
-                    <Link
-                      to={`/joined-events/${user.email}`}
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
-                    >
-                      Joined Events
-                    </Link>
-                  </div>
-                )}
+              {user && (
+                <div className="relative ml-40 md:ml-0 mt-5 md:mt-0 group inline-block cursor-pointer">
+                  <img
+                    className="rounded-full w-8 h-8"
+                    src={
+                      user ? serverUserData?.photo || user.photoURL || "" : ""
+                    }
+                    alt=""
+                    onClick={() => setShowDropdown(!showDropdown)}
+                  />
+                  {showDropdown && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
+                      <Link
+                        to="/create-event"
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                      >
+                        Create Event
+                      </Link>
+                      <Link
+                        to="/my-events"
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                      >
+                        Manage Events
+                      </Link>
+                      <Link
+                        to={`/joined-events/${user.email}`}
+                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                      >
+                        Joined Events
+                      </Link>
+                    </div>
+                  )}
 
-                {user && (
-                  <span className="absolute top-1/2 -translate-y-1/2 right-full mr-2 px-2 py-1 text-sm bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    {serverUserData?.name || user.displayName}
-                  </span>
-                )}
-              </div>
+                  {user && (
+                    <span className="absolute top-1/2 -translate-y-1/2 right-full mr-2 px-2 py-1 text-sm bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                      {serverUserData?.name || user.displayName}
+                    </span>
+                  )}
+                </div>
+              )}
 
               <div className="hidden md:flex items-center space-x-4">
                 {user ? (
@@ -280,25 +284,25 @@ const Navbar = () => {
               </label>
             </div>
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link to={"/"}><a className="block px-3 py-2 text-c hover:text-gray-900">Home</a></Link>
-              <Link to={"/upcoming-events"}><a className="block px-3 py-2 text-c hover:text-gray-900">
-                Upcoming Events
-              </a></Link>
-              <a className="block px-3 py-2 text-c hover:text-gray-900">
-                Services
-              </a>
-              <a className="block px-3 py-2 text-c hover:text-gray-900">
-                Contact
-              </a>
+              <Link to={"/"}>
+                <a className="block px-3 py-2 text-c hover:text-gray-900">
+                  Home
+                </a>
+              </Link>
+              <Link to={"/upcoming-events"}>
+                <a className="block px-3 py-2 text-c hover:text-gray-900">
+                  Upcoming Events
+                </a>
+              </Link>
               <button
-                onClick={handleAuth}
+                onClick={handleLogOut}
                 className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
-                  isLoggedIn
+                  user
                     ? "bg-red-500 hover:bg-red-600 text-white"
                     : "bg-blue-500 hover:bg-blue-600 text-white"
                 }`}
               >
-                {isLoggedIn ? "Logout" : "Login"}
+                {user ? "Logout" : "Login"}
               </button>
             </div>
           </div>
