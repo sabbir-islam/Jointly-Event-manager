@@ -14,7 +14,7 @@ const ManageEvent = () => {
   console.log("User email:", user?.email);
 
   return (
-    <div className="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 my-10">
+    <div className="w-[80%] mx-auto grid grid-cols-1 gap-4 md:grid-cols-3 my-10">
       {myEvents.map((ev) => (
         <MyEvents key={ev._id} ev={ev}></MyEvents>
       ))}

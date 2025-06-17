@@ -39,7 +39,7 @@ const UpcomingEvents = () => {
 
   return (
     <div className="w-[80%] mx-auto">
-      <div className="flex justify-between items-center my-6 gap-4">
+      <div className="flex flex-col md:flex-row justify-between items-center my-6 gap-4">
         <input
           type="text"
           placeholder="Search events by name"
@@ -50,7 +50,7 @@ const UpcomingEvents = () => {
         <select
           value={eventType}
           onChange={handleEventTypeChange}
-          className="border border-gray-400 rounded px-3 py-1"
+          className="border border-gray-400  rounded px-3 py-1 text-gray-500"
         >
           <option value="">All Event Types</option>
           <option value="Cleanup">Cleanup</option>

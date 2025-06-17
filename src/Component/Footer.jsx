@@ -10,8 +10,7 @@ const Footer = () => {
           <div className="max-w-[360px]">
             <h1 className="text-2xl font-bold font1">Jointly</h1>
             <p className="text-base font-normal">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perspiciatis, reiciendis.
+              Jointly is a community platform to create, join, and track social events like cleanups, tree plantations, and donation drives.
             </p>
           </div>
           <div>

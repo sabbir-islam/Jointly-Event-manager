@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, Navigate, NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const handleAuth = () => setIsLoggedIn(!isLoggedIn);
+  const navigate = useNavigate();
 
   const switchTheme = () => {
     const newTheme = isDarkMode ? "light" : "dark";
@@ -29,6 +30,14 @@ const Navbar = () => {
         toast.error(error.message);
       });
   };
+
+  const handleAuthMobile = () => {
+  if (user) {
+    handleLogOut();
+  } else {
+    navigate("/login");
+  }
+};
 
   // console.log(serverUserData.name);
 
@@ -295,7 +304,7 @@ const Navbar = () => {
                 </a>
               </Link>
               <button
-                onClick={handleLogOut}
+                onClick={handleAuthMobile}
                 className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
                   user
                     ? "bg-red-500 hover:bg-red-600 text-white"
