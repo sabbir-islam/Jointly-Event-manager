@@ -8,9 +8,8 @@ import { AuthContext } from "../Provider/AuthProvider";
 import axios from "axios";
 
 const SignUp = () => {
-  const { register ,googleLogin ,setUser} = use(AuthContext);
+  const { register, googleLogin, setUser } = use(AuthContext);
   const navigate = useNavigate();
-  
 
   const handelSignUp = (e) => {
     e.preventDefault();
@@ -33,7 +32,9 @@ const SignUp = () => {
       .then((result) => {
         toast.success("User Created Successfully");
         console.log(result);
-        navigate("/");
+        const createdUser = result.user;
+        setUser(createdUser);
+
         axios
           .post("https://jointly-event-management.vercel.app/users", {
             name,
@@ -46,6 +47,7 @@ const SignUp = () => {
           .catch((error) => {
             console.error(error);
           });
+        navigate("/");
       })
       .catch((err) => {
         toast.error(err);
@@ -53,16 +55,16 @@ const SignUp = () => {
   };
 
   const handelGoogleLogin = () => {
-      googleLogin()
-        .then((result) => {
-          toast.success("Login Successful");
-          setUser(result.user);
-          navigate(`${location.state ? location.state : "/"}`);
-        })
-        .catch((error) => {
-          toast.error(error.message);
-        });
-    };
+    googleLogin()
+      .then((result) => {
+        toast.success("Login Successful");
+        setUser(result.user);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
   return (
     <div>
       <div className="bg-5 pb-20 pt-14 md:pt-32">
@@ -111,7 +113,10 @@ const SignUp = () => {
               </button>
             </form>
             <div className="divider">OR</div>
-            <div onClick={handelGoogleLogin} className="card btn bg-base-300 rounded-box w-20 h-10 ml-24">
+            <div
+              onClick={handelGoogleLogin}
+              className="card btn bg-base-300 rounded-box w-20 h-10 ml-24"
+            >
               <Link>
                 <FcGoogle size={25} />
               </Link>

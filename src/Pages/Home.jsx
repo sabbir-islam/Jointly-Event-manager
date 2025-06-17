@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import Features from "./Features";
 import Gallery from "./Gallery";
 import NewsLetter from "./NewsLetter";
+import { Link } from "react-router";
 
 const Home = () => {
   const ref = useRef(null);
@@ -41,9 +42,11 @@ const Home = () => {
           </motion.p>
         </div>
         <div>
-          <button className="btn hover:bg-[#210F37] hover:text-white text-lg font-semibold">
-            Join an Event
-          </button>
+          <Link to={"/upcoming-events"}>
+            <button className="btn hover:bg-[#210F37] hover:text-white text-lg font-semibold">
+              Join an Event
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -54,7 +57,6 @@ const Home = () => {
       <div className="my-20">
         <NewsLetter></NewsLetter>
       </div>
-
     </div>
   );
 };

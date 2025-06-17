@@ -40,19 +40,22 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
 
       // jwt
-      if(currentUser?.email){
-        axios.post('https://jointly-event-management.vercel.app/jwt',{
-        email : currentUser?.email
-      })
-      .then(res=>{localStorage.setItem('token', res.data.token)}
-      )
+      if (currentUser?.email) {
+        axios
+          .post("https://jointly-event-management.vercel.app/jwt", {
+            email: currentUser?.email,
+          })
+          .then((res) => {
+            localStorage.setItem("token", res.data.token);
+          });
       }
 
       const fetchServerUser = async () => {
         if (currentUser?.email) {
           try {
+            
             const res = await axios.get(
-              `https://jointly-event-management.vercel.app/users/${currentUser.email}`
+              `https://jointly-event-management.vercel.app/users/${currentUser.email}`,
             );
             console.log("Server Response: ", res.data);
             setServerUserData(res.data);
@@ -72,7 +75,6 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-
   const authData = {
     user,
     setUser,
@@ -81,10 +83,12 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     logOut,
     serverUserData,
-    setLoading
+    setLoading,
   };
   return (
-    <AuthContext.Provider value={authData}>{!loading && children}</AuthContext.Provider>
+    <AuthContext.Provider value={authData}>
+      {!loading && children}
+    </AuthContext.Provider>
   );
 };
 
