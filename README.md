@@ -241,6 +241,7 @@ This project is licensed under the MIT License.
 
 **Sabbir Islam**
 
+<<<<<<< HEAD
 - GitHub: [@Programming-Hero-Web-Course4](https://github.com/Programming-Hero-Web-Course4)
 
 ## 🙏 Acknowledgments
@@ -251,5 +252,9 @@ This project is licensed under the MIT License.
 - Lottie for beautiful animations
 
 ---
+=======
+- GitHub: [Sabbir](https://github.com/sabbir-islam)
+
+>>>>>>> 0f6e3bef4cb137fe1b54becef3f0f013d0299a58
 
 Built with ❤️ using React and modern web technologies.
