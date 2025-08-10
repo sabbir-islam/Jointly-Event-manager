@@ -4,6 +4,7 @@ import Features from "./Features";
 import Gallery from "./Gallery";
 import NewsLetter from "./NewsLetter";
 import { Link } from "react-router";
+import FaqSection from "./FaqSection";
 
 const Home = () => {
   const ref = useRef(null);
@@ -52,6 +53,10 @@ const Home = () => {
 
       <div className="my-20">
         <Gallery></Gallery>
+      </div>
+
+      <div className="my-20">
+        <FaqSection></FaqSection>
       </div>
 
       <div className="my-20">
