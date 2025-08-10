@@ -32,8 +32,8 @@ const SignUp = () => {
       .then((result) => {
         toast.success("User Created Successfully");
         console.log(result);
-        const createdUser = result.user;
-        setUser(createdUser);
+        // const createdUser = result.user;
+        // setUser(createdUser);
 
         axios
           .post("https://jointly-event-management.vercel.app/users", {
