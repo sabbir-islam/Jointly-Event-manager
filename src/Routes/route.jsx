@@ -118,7 +118,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        Component: Blog
+        Component: Blog,
+        hydrateFallbackElement: <LoadingPage></LoadingPage>,
       },
       {
         path: "/login",
