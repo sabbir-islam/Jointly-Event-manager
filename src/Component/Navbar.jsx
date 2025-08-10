@@ -73,6 +73,16 @@ const Navbar = () => {
               >
                 Upcoming Events
               </NavLink>
+              <NavLink
+                to={"/blog"}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-green-800 text-base font-medium "
+                    : "text-base font-medium  hover:text-green-800 transition duration-300"
+                }
+              >
+                Blogs
+              </NavLink>
               {/* <NavLink
                 className={({ isActive }) =>
                   isActive
@@ -301,6 +311,11 @@ const Navbar = () => {
               <Link to={"/upcoming-events"}>
                 <a className="block px-3 py-2 text-c hover:text-gray-900">
                   Upcoming Events
+                </a>
+              </Link>
+              <Link to={"/blog"}>
+                <a className="block px-3 py-2 text-c hover:text-gray-900">
+                  Blogs
                 </a>
               </Link>
               <button

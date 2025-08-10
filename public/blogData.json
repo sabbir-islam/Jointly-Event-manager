@@ -1,0 +1,72 @@
+[
+  {
+    "id": "p1",
+    "slug": "volunteer-community-service-guide",
+    "title": "Volunteer Community Service: A Simple Guide to Getting Involved",
+    "excerpt": "Find a cause, make a plan, and start helping—without feeling overwhelmed.",
+    "content": "Volunteering connects you to people and problems that matter. Start by listing causes you care about (education, environment, food security), then match them with skills you already have (mentoring, logistics, design) or want to learn.\n\nKeep commitments small at first—one shift, one weekend—so you can build a sustainable rhythm. Most nonprofits provide quick training; what they value most is reliability, kindness, and clear communication.\n\nHow to find opportunities: check local mutual aid groups, school clubs, libraries, shelters, parks departments, or platforms like VolunteerMatch. Message organizers with a short intro, your availability, and the role you’re interested in.\n\nQuick tips:\n- Set a realistic monthly time budget you can keep\n- Bring a friend to make it social and safer\n- Confirm location, dress code, and accessibility needs upfront\n- Arrive 10 minutes early; stay 10 minutes late to help close out\n- After your shift, jot down what went well and what to improve",
+    "cover": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+    "tags": ["volunteer", "community", "service"],
+    "category": "Community",
+    "author": { "name": "Rae", "avatar": "https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png", "role": "Community" },
+    "publishedAt": "2025-08-10T15:16:00.000Z",
+    "readingMinutes": 4,
+    "featured": true
+  },
+  {
+    "id": "p2",
+    "slug": "plan-a-one-day-volunteer-drive",
+    "title": "Plan a One-Day Volunteer Drive",
+    "excerpt": "A simple checklist to recruit, schedule, and run a successful volunteer day.",
+    "content": "Pick a single, specific goal (e.g., pack 200 hygiene kits or clean two blocks). Partner with a local nonprofit so efforts align with real needs. Create a short sign-up form with time slots, roles, and accessibility questions.\n\nKeep instructions skimmable: where to meet, what to bring, safety notes, and who to contact. On the day, welcome volunteers, do a 5-minute briefing, assign buddies, and take a quick group photo for your recap.\n\nChecklist:\n- Confirm supplies (gloves, bags, labels, water, first aid)\n- Assign roles (greeter, trainer, materials lead, photographer)\n- Prepare a 1-page brief with map and timeline\n- Set up a check-in table and name stickers\n- Post-event: thank-you note, impact numbers, and next steps",
+    "cover": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
+    "tags": ["organizing", "volunteer", "checklist"],
+    "category": "Organizing",
+    "author": { "name": "Omar", "avatar": "https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png", "role": "Organizer" },
+    "publishedAt": "2025-08-08T10:00:00.000Z",
+    "readingMinutes": 3,
+    "featured": false
+  },
+  {
+    "id": "p3",
+    "slug": "measure-volunteer-impact-simple-metrics",
+    "title": "Measure Volunteer Impact with Simple Metrics",
+    "excerpt": "Track what matters so you can improve, report, and celebrate wins.",
+    "content": "You don’t need a dashboard to show impact—just consistent notes. Separate outputs (what you did) from outcomes (what changed). Capture a few quotes and photos to humanize the numbers.\n\nStart with a shared doc or spreadsheet. Update it right after each activity while details are fresh. Review monthly to spot bottlenecks and wins you can scale.\n\nMetrics to track:\n- Outputs: hours volunteered, items packed, blocks cleaned\n- Outcomes: people served, wait times reduced, satisfaction scores\n- Retention: % of volunteers returning within 90 days\n- Quality: brief post-event survey (2–3 questions)\n- Stories: one short highlight with a photo and consent",
+    "cover": "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=80",
+    "tags": ["best-practices", "impact", "nonprofit"],
+    "category": "Best Practices",
+    "author": { "name": "Priya", "avatar": "https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png", "role": "Programs" },
+    "publishedAt": "2025-08-05T13:00:00.000Z",
+    "readingMinutes": 4,
+    "featured": false
+  },
+  {
+    "id": "p10",
+    "slug": "virtual-volunteering-make-impact-anywhere",
+    "title": "Virtual Volunteering: Make Impact From Anywhere",
+    "excerpt": "Tutor, translate, mentor, or coordinate—no commute required.",
+    "content": "Remote roles make volunteering accessible and flexible. Common options include online tutoring, language translation, crisis text response, digital marketing for nonprofits, and map/data tasks for disaster response. Start by selecting a cause and a weekly time slot you can consistently keep.\n\nSet up a quiet workspace, test your camera/mic, and agree on communication norms (response times, tools, and escalation paths). Ask for a simple onboarding checklist and a point of contact.\n\nQuick tips:\n- Use calendars and reminders to avoid no-shows\n- Keep updates short and structured (what happened, blockers, next)\n- Protect privacy—avoid sharing personal contact details\n- Record repeatable steps in a shared doc for the next volunteer\n- Review impact monthly and refine your role",
+    "cover": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+    "tags": ["volunteer", "remote", "best-practices"],
+    "category": "Best Practices",
+    "author": { "name": "Lina", "avatar": "https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png", "role": "Community" },
+    "publishedAt": "2025-08-10T15:20:00.000Z",
+    "readingMinutes": 4,
+    "featured": false
+  },
+  {
+    "id": "p11",
+    "slug": "run-a-neighborhood-cleanup-day",
+    "title": "Run a Neighborhood Cleanup Day",
+    "excerpt": "A simple plan, a few supplies, and clear roles can transform your block.",
+    "content": "Pick a target area and a 2–3 hour window. Coordinate with the city or property manager for trash pickup and disposal rules. Recruit via flyers, group chats, or a short sign-up form with time slots and accessibility needs.\n\nOn the day: do a 5-minute safety briefing (gloves on, lift safely, watch traffic), assign buddies, and sort recyclables. Track bags collected and note problem spots to report.\n\nTimeline:\n- 2 weeks before: confirm permits and supplies (bags, grabbers, gloves, water)\n- 1 week: post reminders and share a simple map\n- Event day: check-in table, role signs, and photo at the end\n- After: share impact numbers, thank volunteers, and schedule the next one",
+    "cover": "https://cdn.prod.website-files.com/60ae9cd7684cf5b2b3152b77/67361b6857cfad244f593bfc_AD_4nXfbLnS9MA3FngssyExvb9eh1N0Ptni59OchYLo1GaiCM5mMSIxDVmUQoVyescauWGQMW-8I5dfXH5N3N4o173s-6wBYkbLN8WnOs4jJaQEKyHGmM2MOBVmMZvIK1EvG_ujB4Htf.jpeg",
+    "tags": ["organizing", "environment", "cleanup", "volunteer"],
+    "category": "Organizing",
+    "author": { "name": "Jamal", "avatar": "https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png", "role": "Organizer" },
+    "publishedAt": "2025-08-06T09:00:00.000Z",
+    "readingMinutes": 3,
+    "featured": true
+  }
+]
